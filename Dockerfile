@@ -35,6 +35,11 @@ RUN git clone https://github.com/TryGhost/mobiledoc-kit.git /mobiledoc-kit && \
 RUN rm -rf /Ghost/core/client/node_modules/\@tryghost/mobiledoc-kit/dist && \
     cp -r /patches/mobiledoc-kit/dist /Ghost/core/client/node_modules/\@tryghost/mobiledoc-kit/
 
+RUN cd /Ghost 
+    npm install ghost-webdav-storage-adapter
+    mkdir -p ./content/adapters/storage/webdav
+    cp -v ./node_modules/ghost-webdav-storage-adapter/dist/*.js ./content/adapters/storage/webdav
+
 WORKDIR /Ghost
 
 RUN grunt prod
