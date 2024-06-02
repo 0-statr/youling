@@ -11,7 +11,7 @@ RUN echo '' > /etc/apk/repositories && \
     echo "Asia/Shanghai" > /etc/timezone
 
 RUN apk update && apk add git && \
-    yarn global add knex-migrator grunt-cli ember-cli bower
+    yarn global add knex-migrator grunt-cli ember-cli bower --ignore-engines
 
 COPY patches/mobiledoc-kit/event-manager.js /patches/mobiledoc-kit/event-manager.js
 
